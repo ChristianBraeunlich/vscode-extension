@@ -79,8 +79,8 @@ jobs:
           files: '${{github.workspace}}/package.json'
           patch-syntax: |
             = /version => "0.0.1"
-            = /displayName => "AL Development Toolkit"
-            = /description => "The Development Toolkit for Application Language (AL) development."
+            = /displayName => "vscode-extension"
+            = /description => "My first VS Code Extension."
       
       - name: add version in CHANGELOG.md
         uses: cschleiden/replace-tokens@v1.0
@@ -99,8 +99,8 @@ jobs:
       - name: upload vsix as artifact
         uses: actions/upload-artifact@v1
         with:
-          name: al-development-toolkit-0.0.1.vsix
-          path: ${{github.workspace}}/al-development-toolkit-0.0.1.vsix
+          name: vscode-extension-0.0.1.vsix
+          path: ${{github.workspace}}/vscode-extension-0.0.1.vsix
 
       - name: create a release
         id: create_release
@@ -121,6 +121,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }} 
-          asset_path: ${{github.workspace}}/al-development-toolkit-0.0.1.vsix
-          asset_name: al-development-toolkit-0.0.1.vsix
+          asset_path: ${{github.workspace}}/vscode-extension-0.0.1.vsix
+          asset_name: vscode-extension-0.0.1.vsix
           asset_content_type: application/vsix
